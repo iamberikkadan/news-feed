@@ -1,0 +1,42 @@
+<div class="container">
+  <h2>{{ 'HOME.TITLE' | translate }}</h2>
+  <label>
+    {{ 'HOME.SELECT' | translate }}
+    <select #langSelect (change)="translate.use(langSelect.value)">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{
+        lang }}</option>
+    </select>
+  </label>
+  <input class="search" type="text" [(ngModel)]="title" (input)="search()">
+  <div class="news" *ngFor="let item of news">
+    <h2>{{item.title}}</h2>
+    <div class="news__info">
+      <img class="news__info__img" [src]="item.src" alt="">
+      <div class="news__info__in">
+        <p>{{item.descripstion | slice:0:100}}...</p>
+        <div class="news__info__in__raiting">
+          <span>
+            <button class="btn btn-dislike" (click)="dislike(item)">-</button>
+          </span>
+          <span>
+            {{item.disLike}}
+          </span>
+          <span>
+            <button class="btn" (click)="like(item)">+</button>
+          </span>
+          <span>
+            {{item.likeCount}}
+          </span>
+        </div>
+      </div>
+      <div class="news__info__btn-full">
+        <button class="btn" [routerLink]="['/news/'+item.id]">
+          Подробнее
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1500" (scrolled)="onScroll()"></div>
+  <div *ngIf="finished">Больше новостей нет</div>
+</div>

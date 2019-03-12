@@ -1,1 +1,28 @@
 /* You can add global styles to this file, and also import other style files */
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family: 'Roboto';
+
+}
+
+* {
+  padding: 0;
+  margin: 0;
+}
+
+.btn {
+  background-color: #48aae6;
+  color: #ffffff;
+  border: 1px solid #1da1f2;
+  border-radius: 100px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+  line-height: 20px;
+  padding: 6px 16px;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
+}

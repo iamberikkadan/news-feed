@@ -1,0 +1,23 @@
+<div class="news">
+  <h1>{{news.title}}</h1>
+  <img class="news__img" [src]="news.src" alt="">
+  <div class="news__description">
+    <p>
+      {{news.descripstion}}
+    </p>
+  </div>
+  <div class="news__raiting">
+    <span>
+      <button class="btn btn-dislike" (click)="dislike()">-</button>
+    </span>
+    <span>
+      {{news.disLike}}
+    </span>
+    <span>
+      <button class="btn" (click)="like()">+</button>
+    </span>
+    <span>
+      {{news.likeCount}}
+    </span>
+  </div>
+</div>
