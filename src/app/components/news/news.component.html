@@ -3,40 +3,43 @@
   <label>
     {{ 'HOME.SELECT' | translate }}
     <select #langSelect (change)="translate.use(langSelect.value)">
-      <option *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang"
+        [selected]="lang === translate.currentLang">{{
         lang }}</option>
     </select>
   </label>
   <input class="search" type="text" [(ngModel)]="title" (input)="search()">
-  <div class="news" *ngFor="let item of news">
+  <div class="news" *ngFor="let item of news; let i= index">
     <h2>{{item.title}}</h2>
     <div class="news__info">
       <img class="news__info__img" [src]="item.src" alt="">
-      <div class="news__info__in">
-        <p>{{item.descripstion | slice:0:100}}...</p>
-        <div class="news__info__in__raiting">
-          <span>
-            <button class="btn btn-dislike" (click)="dislike(item)">-</button>
-          </span>
-          <span>
+      <div class="news__info__item">
+        <p>{{item.descripstion | slice:0:250}}...</p>
+        <div class="news__info__item__raiting">
+          <button class="button error" (click)="dislike(item)"><i class="fas
+              fa-thumbs-down"></i></button>
+          <div>
             {{item.disLike}}
-          </span>
-          <span>
-            <button class="btn" (click)="like(item)">+</button>
-          </span>
-          <span>
+          </div>
+          <button class="button" (click)="like(item)"><i class="fas
+              fa-thumbs-up"></i></button>
+          <div>
             {{item.likeCount}}
-          </span>
+          </div>
         </div>
       </div>
-      <div class="news__info__btn-full">
-        <button class="btn" [routerLink]="['/news/'+item.id]">
-          Подробнее
+      <div class="news__info__full">
+        <button class="button" [routerLink]="['/news/'+item.id]">
+          <span>Подробнее</span>
+        </button>
+        <button class="button error" (click)="delete(item, i)">
+          <span>Удалить</span>
         </button>
       </div>
     </div>
   </div>
 
-  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="1500" (scrolled)="onScroll()"></div>
+  <div class="search-results" infiniteScroll [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="1500" (scrolled)="onScroll()"></div>
   <div *ngIf="finished">Больше новостей нет</div>
 </div>

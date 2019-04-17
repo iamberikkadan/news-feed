@@ -18,7 +18,7 @@
     border-radius: 21px;
     box-sizing: border-box;
     color: #14171a;
-    transition: all .2s ease-in-out;
+    transition: all 0.2s ease-in-out;
   }
 
   .news {
@@ -34,33 +34,29 @@
     &__info {
       display: flex;
       align-items: center;
-
+      justify-content: space-between;
       &__img {
         width: 400px;
         height: 250px;
       }
 
-      &__in {
-        padding: 20px;
+      &__item {
+        padding: 15px;
 
         p {
           margin-bottom: 10px;
         }
 
         &__raiting {
-          .btn {
+          display: flex;
+          align-items: center;
+          .button {
             padding: 6px 12px;
-          }
-
-          .btn-dislike {
-            background: #d72b26;
-            border: 0;
           }
         }
       }
     }
   }
-
 }
 
 @media only screen and (max-width: 768px) {
@@ -68,18 +64,21 @@
     .news {
       &__info {
         flex-direction: column;
-
         &__img {
           width: 100%;
           height: 250px;
         }
+        &__item {
+          &__raiting {
+            justify-content: center;
+          }
+        }
 
-        &__btn-full {
+        &news__info__full {
           width: 100%;
 
           .btn {
             width: 100%;
-
           }
         }
       }

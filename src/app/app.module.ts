@@ -14,7 +14,7 @@ import { FormsModule } from '@angular/forms';
 import { NewsFullComponent } from './components/news-full/news-full.component';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 export function HttpLoaderFactory(httpClient: HttpClient) {
   return new TranslateHttpLoader(httpClient);
@@ -26,7 +26,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     HeaderComponent,
     ContentComponent,
     NewsComponent,
-    NewsFullComponent
+    NewsFullComponent,
   ],
   imports: [
     BrowserModule,
@@ -40,7 +40,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
-    }
+      }
     })
 
 

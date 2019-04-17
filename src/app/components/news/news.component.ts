@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ServerService } from 'src/app/shared/services/server.service';
 import { News } from 'src/app/shared/models/models';
-import {TranslateService} from '@ngx-translate/core';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-news',
@@ -40,7 +40,7 @@ export class NewsComponent implements OnInit {
   }
 
   search() {
-    if(this.title != "") {
+    if (this.title != "") {
       this.news = this.newsEx.filter(res => {
         return res.title.toLocaleLowerCase().match(this.title.toLocaleLowerCase());
       })
@@ -55,11 +55,18 @@ export class NewsComponent implements OnInit {
 
   getNews() {
     this.news = this.newsEx.slice(0, this.batch);
-    if(this.news.length === this.newsEx.length) {
+    if (this.news.length === this.newsEx.length) {
       this.finished = true;
     }
-    if(this.finished) return;
+    if (this.finished) return;
 
+  }
+
+  delete(news: News, index) {
+
+    this.service.deleteNew(news.id).then(res => {
+      this.news.splice(index, 1);
+    });
   }
 
 }

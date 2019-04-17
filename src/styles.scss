@@ -3,8 +3,7 @@ html,
 body {
   height: 100%;
   width: 100%;
-  font-family: 'Roboto';
-
+  font-family: "Roboto";
 }
 
 * {
@@ -12,7 +11,9 @@ body {
   margin: 0;
 }
 
-.btn {
+.button {
+  width: 120px;
+  margin: 5px;
   background-color: #48aae6;
   color: #ffffff;
   border: 1px solid #1da1f2;
@@ -25,4 +26,9 @@ body {
   position: relative;
   text-align: center;
   white-space: nowrap;
+}
+
+.error {
+  background: #d72b26;
+  border: 0;
 }

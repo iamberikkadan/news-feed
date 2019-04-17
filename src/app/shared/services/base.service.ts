@@ -1,6 +1,6 @@
 import * as moment from 'moment';
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpParams} from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 @Injectable()
 export class BaseService {
@@ -19,7 +19,7 @@ export class BaseService {
   get(uri: string, body: any): Promise<any> {
     body = this.normalBody(body);
     const pars = this.getUrlParams(body);
-    return this.http.get(uri, {params: pars}).toPromise().then(res => res);
+    return this.http.get(uri, { params: pars }).toPromise().then(res => res);
   }
 
   post(uri: string, body: any): Promise<any> {
@@ -27,7 +27,7 @@ export class BaseService {
     return this.http.post(uri, body).toPromise().then(res => res);
   }
 
-  delet(uri: string, body: any): Promise<any> {
+  delete(uri: string, body: any): Promise<any> {
     body = this.normalBody(body);
     return this.http.delete(uri, body).toPromise().then(res => res);
   }

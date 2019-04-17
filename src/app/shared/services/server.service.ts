@@ -7,18 +7,18 @@ import { Observable } from 'rxjs';
 
 @Injectable()
 export class ServerService extends BaseService {
-	public api = environment.apiUrl;
-	private httpHeaders = new HttpHeaders({
-		Accept: 'application/json',
-		'Content-Type': 'application/x-www-form-urlencoded'
-	});
+  public api = environment.apiUrl;
+  private httpHeaders = new HttpHeaders({
+    Accept: 'application/json',
+    'Content-Type': 'application/x-www-form-urlencoded'
+  });
 
-	constructor(http: HttpClient) {
-		super(http);
+  constructor(http: HttpClient) {
+    super(http);
   }
 
   getAllNews() {
-		const url = 'news';
+    const url = 'news';
     return this.get(this.api + url, {});
   }
   getFullNewsInfo(newsId) {
@@ -27,6 +27,10 @@ export class ServerService extends BaseService {
 
   }
 
+  deleteNew(id) {
+    const url = `news/${id}`;
+    return this.delete(this.api + url, {});
+  }
   UpdateLike(news: News) {
     const url = `news/${news.id}`;
 
